@@ -62,7 +62,26 @@ nav select:focus{outline:2px solid var(--ambra2)}
 .lockbtn:hover{background:var(--verde2)}
 .editbar{display:none;position:fixed;top:14px;right:70px;z-index:1000;background:var(--ambra);
   color:#fff;border-radius:10px;padding:8px 14px;font-size:.78rem;font-weight:700;
-  box-shadow:0 2px 10px rgba(0,0,0,.25);max-width:260px}
+  box-shadow:0 2px 10px rgba(0,0,0,.25);max-width:280px}
+.pwdmodal{position:fixed;inset:0;background:rgba(10,30,25,.55);z-index:1200;
+  display:flex;align-items:center;justify-content:center;padding:20px}
+.pwdmodal.hidden{display:none}
+.pwdbox{background:#fff;border-radius:16px;padding:22px;width:330px;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);text-align:center}
+.pwdbox h3{color:var(--verde);margin-bottom:4px}
+.pwdbox p{font-size:.82rem;color:var(--grigio);margin-bottom:12px}
+.pwdbox input{width:100%;border:1.5px solid var(--linea);border-radius:10px;padding:10px 12px;
+  font-size:.95rem;text-align:center}
+.pwdbox input:focus{outline:none;border-color:var(--verde2)}
+.pwdrow{display:flex;gap:8px;margin-top:12px}
+.pwdrow button{flex:1;border:none;border-radius:10px;padding:10px;font-weight:700;cursor:pointer;
+  font-family:inherit}
+#pwdok{background:var(--verde);color:#fff}
+#pwdcancel{background:#EEF0F2;color:var(--ink)}
+#pwderr{display:none;color:#B91C1C;font-size:.8rem;margin-top:8px}
+.pwdmodal.shake .pwdbox{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 body.editmode [data-ed],body.editmode .edf{outline:1.5px dashed var(--ambra);outline-offset:3px;
   border-radius:4px;cursor:text;min-width:1em;min-height:1em}
 body.editmode .delt,body.editmode .addt{display:inline-block}
@@ -96,6 +115,22 @@ p.lead{color:var(--grigio);font-size:.92rem;max-width:780px;margin-bottom:14px}
 .rbody b{display:block;font-size:.95rem;line-height:1.3}
 .rmeta{font-size:.76rem;color:var(--grigio)}
 .rarrow{color:var(--ambra);font-size:1.15rem;flex:none}
+
+/* collage home */
+.collage{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 6px}
+@media(max-width:760px){.collage{grid-template-columns:repeat(2,1fr)}}
+.collage figure{margin:0}
+.collage img{width:100%;height:190px;object-fit:cover;border-radius:12px;display:block;
+  box-shadow:0 3px 12px rgba(34,48,59,.15)}
+.collage figcaption{font-size:.73rem;color:var(--grigio);margin-top:5px;text-align:center}
+
+/* foto grande del giorno (stile collage home) */
+.daycollage{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;
+  margin:2px 0 16px}
+.daycollage figure{margin:0}
+.daycollage img{width:100%;height:auto;max-height:460px;object-fit:cover;border-radius:14px;
+  border:1px solid var(--linea);box-shadow:0 5px 16px rgba(34,48,59,.16);display:block}
+.daycollage figcaption{font-size:.8rem;color:var(--grigio);margin-top:6px;text-align:center}
 
 /* giorno */
 .grid-day{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:20px}
@@ -151,12 +186,15 @@ p.lead{color:var(--grigio);font-size:.92rem;max-width:780px;margin-bottom:14px}
 .gallery figcaption{font-size:.74rem;color:var(--grigio);margin-top:4px}
 
 /* scaletta (senza spunte) */
-.tappe{list-style:none;display:flex;flex-direction:column;gap:2px}
-.tappa{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:10px;
+.tappe{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tappa{display:flex;flex-direction:column;align-items:stretch;padding:10px;border-radius:12px;
   border-left:3px solid transparent}
 .tappa:hover{background:#F7F5EE}
-.timg{width:120px;height:80px;object-fit:cover;border-radius:8px;flex:none;border:1px solid var(--linea);
-  box-shadow:0 1px 4px rgba(34,48,59,.1)}
+.trow{display:flex;gap:10px;align-items:flex-start;width:100%;padding-top:8px}
+.tfig{margin:0}
+.tfig img{width:100%;height:auto;max-height:340px;object-fit:cover;border-radius:12px;
+  border:1px solid var(--linea);box-shadow:0 4px 14px rgba(34,48,59,.14)}
+.tfig figcaption{font-size:.74rem;color:var(--grigio);margin-top:5px}
 .tora{min-width:48px;font-weight:800;color:var(--verde);font-size:.88rem;padding-top:1px;flex:none}
 .tcorpo{flex:1;min-width:0}
 .tcorpo b{font-size:.93rem;display:block}
@@ -197,40 +235,7 @@ p.lead{color:var(--grigio);font-size:.92rem;max-width:780px;margin-bottom:14px}
 /* mappa SVG */
 .svgbox{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:12px;margin-bottom:6px}
 .svgbox svg{width:100%;height:auto;display:block}
-.mare{fill:#C8DFF0}
-.estero{fill:#E7E2D4}
-.prov{fill:#FBF8F0;stroke:#C9C1AC;stroke-width:.4;vector-effect:non-scaling-stroke}
-.prov.vis{fill:#DFEBDE;stroke:#A9C4AE;stroke-width:.7}
-.prov:hover{fill:#EDF4ED}
-.r-bus{stroke:#0E7A50;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.r-ferry{stroke:#1E6FA8;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.r-night{stroke:#7B4CD6;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.r-loop{stroke:#E8860B;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.r-loop.lc{stroke-width:1.1}
-.stop{cursor:pointer}
-.stop circle{fill:#fff;stroke:#22303B;stroke-width:1.8}
-.stop:hover circle{fill:#FDF3E3;stroke-width:2.4}
-.stopnum{font-size:4.6px;font-weight:800;fill:#22303B;text-anchor:middle;pointer-events:none}
-.puntino{fill:#fff;stroke:#5B6B76;stroke-width:1.1;cursor:pointer}
-.puntino:hover{fill:#FDF3E3}
-.lbl,.lbl-main,.lbl-s,.lbl-sea,.lbl-star,.map-title,.map-sub,.legtxt,.legtitle{
-  paint-order:stroke;stroke:#fff;stroke-width:1.7px;stroke-linejoin:round}
-.lbl{font-size:4.3px;font-weight:700;fill:#22303B}
-.lbl-main{font-size:5.4px;font-weight:800;fill:#0E5A47}
-.lbl-s{font-size:3.8px;font-weight:400;fill:#5B6B76}
-.lbl-sea{font-size:4.1px;font-style:italic;fill:#5E87A8}
-.lbl-star{font-size:3.9px;font-weight:800;fill:#C2410C}
-.map-title{font-size:7px;font-weight:800;fill:#0E5A47}
-.map-sub{font-size:4.4px;fill:#5B6B76}
-.legbox{fill:#fff;stroke:#D8D2C2;opacity:.96}
-.legtxt{font-size:3.9px;fill:#22303B}
-.legtitle{font-size:4.6px;font-weight:800;fill:#0E5A47}
-.scala{stroke:#22303B;stroke-width:1.1}
-.nord line{stroke:#22303B;stroke-width:1.4}
-.nord path{fill:#22303B;stroke:none}
-.inset-vn{fill:#F3EFE3;stroke:#B9B3A3;stroke-width:.6}
-.inset-box{fill:none;stroke:#E8860B;stroke-width:2.6}
-#inset{pointer-events:none}
+
 
 /* mappa pagina tabs */
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -273,7 +278,19 @@ footer a{color:var(--ambra2)}
 </head>
 <body>
 <button id="lockbtn" class="lockbtn" title="Sblocca la modifica di testi e tappe">🔒</button>
-<div id="editbar" class="editbar">✏️ Modifica attiva: clicca su testi e tappe per cambiarli</div>
+<div id="editbar" class="editbar">✏️ Modifica attiva: clicca su testi e tappe per cambiarli · CTRL+Z annulla, CTRL+Y ripete</div>
+<div id="pwdmodal" class="pwdmodal hidden">
+  <div class="pwdbox">
+    <h3>🔒 Modifiche protette</h3>
+    <p>Inserisci la password per sbloccare la modifica di testi e tappe.</p>
+    <input id="pwdin" type="password" placeholder="Password" autocomplete="off">
+    <div class="pwdrow">
+      <button id="pwdcancel">Annulla</button>
+      <button id="pwdok">Sblocca</button>
+    </div>
+    <div id="pwderr">Password errata, riprova.</div>
+  </div>
+</div>
 <nav><div class="wrap">
       <a href="index.html">🏠 Panoramica</a><a href="mappa.html">🗺 Mappa</a><a href="info.html" class="on">📋 Info & Checklist</a>
       <select onchange="if(this.value) location.href=this.value" aria-label="Vai al giorno">
@@ -439,34 +456,109 @@ document.getElementById("resetcl").addEventListener("click", () => {
     (si aggiorna automaticamente) · le mappe Google richiedono una connessione internet.</p>
     </div></footer>
 <script>
+const PWD = "simo2026";
 const EDKEY = "vn2026-edit-" + (location.pathname.split("/").pop() || "index.html");
 function edLoad(){ try { return JSON.parse(localStorage.getItem(EDKEY) || "{}"); } catch(e){ return {}; } }
 let edits = edLoad();
 function edSave(){ try { localStorage.setItem(EDKEY, JSON.stringify(edits)); } catch(e){} }
-document.querySelectorAll("[data-ed]").forEach(el => {
-  const k = el.dataset.ed;
-  if (edits[k] != null && edits[k] !== "") el.textContent = edits[k];
+function applyEdits(){
+  document.querySelectorAll("[data-ed]").forEach(el => {
+    const k = el.dataset.ed;
+    if (edits[k] != null && edits[k] !== "") el.textContent = edits[k];
+  });
+}
+applyEdits();
+
+/* ---------- storico ANNULLA/RIPRISTINA (CTRL+Z / CTRL+Y) ---------- */
+const HIST = { stack: [], idx: -1, lastT: 0 };
+function histPush(force){
+  if (typeof window.__snap !== "function") return;
+  const now = Date.now();
+  if (!force && now - HIST.lastT < 700) return;
+  HIST.lastT = now;
+  HIST.stack = HIST.stack.slice(0, HIST.idx + 1);
+  HIST.stack.push(window.__snap());
+  if (HIST.stack.length > 120) HIST.stack.shift();
+  HIST.idx = HIST.stack.length - 1;
+}
+function histApply(s){ if (typeof window.__restore === "function") window.__restore(s); }
+function histUndo(){
+  if (HIST.idx <= 0) return;
+  HIST.idx--;
+  histApply(HIST.stack[HIST.idx]);
+}
+function histRedo(){
+  if (HIST.idx >= HIST.stack.length - 1) return;
+  HIST.idx++;
+  histApply(HIST.stack[HIST.idx]);
+}
+function histInit(){
+  if (HIST.stack.length === 0 && typeof window.__snap === "function") {
+    HIST.stack.push(window.__snap());
+    HIST.idx = 0;
+  }
+}
+document.addEventListener("keydown", e => {
+  if ((e.ctrlKey || e.metaKey) && (e.key === "z" || e.key === "Z")) {
+    e.preventDefault();
+    if (e.shiftKey) histRedo(); else histUndo();
+  } else if ((e.ctrlKey || e.metaKey) && (e.key === "y" || e.key === "Y")) {
+    e.preventDefault();
+    histRedo();
+  }
 });
+/* fallback per le pagine senza tappe (solo testi [data-ed]) */
+window.__snap = window.__snap || function(){ return JSON.stringify({edits: edits}); };
+window.__restore = window.__restore || function(s){
+  try {
+    const o = JSON.parse(s);
+    if (o.edits) { edits = o.edits; edSave(); applyEdits(); }
+  } catch(e){}
+};
+histInit();
+
+/* ---------- lucchetto con password ---------- */
 const lockBtn = document.getElementById("lockbtn");
 const editbar = document.getElementById("editbar");
+const pwdModal = document.getElementById("pwdmodal");
 function setEdit(on){
   document.body.classList.toggle("editmode", on);
   document.querySelectorAll("[data-ed]").forEach(el => { el.contentEditable = on ? "true" : "false"; });
   if (lockBtn) lockBtn.textContent = on ? "🔓" : "🔒";
   if (editbar) editbar.style.display = on ? "block" : "none";
-  try { localStorage.setItem("vn2026-editmode", on ? "1" : "0"); } catch(e){}
   if (window.onEditMode) window.onEditMode(on);
 }
-if (lockBtn) lockBtn.addEventListener("click", () => setEdit(!document.body.classList.contains("editmode")));
+if (lockBtn) lockBtn.addEventListener("click", () => {
+  if (document.body.classList.contains("editmode")) { setEdit(false); return; }
+  pwdModal.classList.remove("hidden");
+  const inp = document.getElementById("pwdin");
+  inp.value = "";
+  inp.focus();
+});
+function pwdTry(){
+  const v = document.getElementById("pwdin").value;
+  if (v === PWD) {
+    pwdModal.classList.add("hidden");
+    setEdit(true);
+  } else {
+    document.getElementById("pwderr").style.display = "block";
+    pwdModal.classList.remove("shake");
+    void pwdModal.offsetWidth;
+    pwdModal.classList.add("shake");
+  }
+}
+if (pwdModal) {
+  document.getElementById("pwdok").addEventListener("click", pwdTry);
+  document.getElementById("pwdcancel").addEventListener("click", () => pwdModal.classList.add("hidden"));
+  document.getElementById("pwdin").addEventListener("keydown", e => { if (e.key === "Enter") pwdTry(); });
+}
 document.addEventListener("input", e => {
   if (e.target.dataset && e.target.dataset.ed !== undefined) {
+    histPush();
     edits[e.target.dataset.ed] = e.target.textContent;
     edSave();
   }
 });
-let initEdit = false;
-try { initEdit = (localStorage.getItem("vn2026-editmode") || "0") === "1"; } catch(e){}
-setEdit(initEdit);
 </script>
 
 </body>

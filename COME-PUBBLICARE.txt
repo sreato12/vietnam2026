@@ -8,8 +8,9 @@ Il sito è STATICO: HTML/CSS/JS con le immagini INCORPORATE (si vedono ovunque).
 3) GITHUB PAGES — repository pubblico + Settings -> Pages
 
 CONTENUTO (edizione finale):
-- index.html ..... copertina + countdown live + voli (stato live, gate, link controllo) + info pratiche + riepilogo
-- giorno-1..14 ... hero fotografico, scaletta, meteo live, link hotel, voli (g1 e g14)
-- mappa.html ..... mappa interattiva + tratte Google Maps
+- index.html ..... copertina + countdown + voli (stato live, gate, link) + collage foto + info pratiche + riepilogo
+- giorno-1..14 ... hero fotografico + FOTO GRANDE del giorno + scaletta con immagini, meteo live,
+                   link hotel, voli (g1 e g14)
+- mappa.html ..... mappa stile agenzia auto-contenuta (cerchi cliccabili, pillole durate)
 - info.html ...... regole d'oro + checklist con aggiunta voci
-- 🔒 lucchetto in alto a destra: modifica testi e tappe
+- 🔒 lucchetto con PASSWORD (simo2026) + CTRL+Z/CTRL+Y per annullare/ripetere
