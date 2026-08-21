@@ -1,0 +1,15 @@
+COME PUBBLICARE IL SITO ONLINE (gratis, ~5 minuti)
+=====================================================
+
+Il sito è STATICO: HTML/CSS/JS con le immagini INCORPORATE (si vedono ovunque).
+
+1) NETLIFY DROP — https://app.netlify.com/drop
+2) VERCEL — https://vercel.com
+3) GITHUB PAGES — repository pubblico + Settings -> Pages
+
+CONTENUTO (edizione finale):
+- index.html ..... copertina + countdown live + voli (stato live, gate, link controllo) + info pratiche + riepilogo
+- giorno-1..14 ... hero fotografico, scaletta, meteo live, link hotel, voli (g1 e g14)
+- mappa.html ..... mappa interattiva + tratte Google Maps
+- info.html ...... regole d'oro + checklist con aggiunta voci
+- 🔒 lucchetto in alto a destra: modifica testi e tappe

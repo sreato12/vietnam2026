@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Info pratiche & checklist · Vietnam del Nord 2026</title>
+<style>
+:root{
+  --verde:#0E5A47; --verde2:#15755B; --verde3:#DFEBDE;
+  --ambra:#D97706; --ambra2:#F59E0B; --ambch:#FDF3E3;
+  --crema:#FBF8F0; --verdino:#E7F0EC;
+  --ink:#22303B; --grigio:#5B6B76; --linea:#D8D2C2;
+  --blu:#1E6FA8; --viola:#7B4CD6; --arancio:#E8860B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#F5F4EF;color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--verde) 0%,#0c4a3a 60%,#09382c 100%);color:#fff;
+  padding:40px 0 30px;position:relative;overflow:hidden}
+.hero.cover{min-height:60vh;display:flex;align-items:center;background-size:cover;background-position:center}
+.hero.daycover{min-height:320px;display:flex;align-items:center;background-size:cover;background-position:center}
+.hero.daycover h1,.hero.cover h1{text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.hero.cover h1{font-size:clamp(2rem,6vw,3.4rem)}
+.hero::after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+  border-radius:50%;background:rgba(245,158,11,.12)}
+.hero .kicker{color:var(--ambra2);font-weight:700;letter-spacing:.18em;font-size:.78rem;text-transform:uppercase}
+.hero h1{font-size:clamp(1.6rem,4.5vw,2.5rem);margin:6px 0 2px;line-height:1.15}
+.hero .sub{color:#cfe4da;font-size:.97rem}
+.countdown{display:inline-flex;align-items:baseline;gap:10px;margin-top:14px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:8px 16px}
+.countdown b{font-size:1.2rem;color:var(--ambra2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chip{background:var(--verde2);border-radius:999px;padding:5px 13px;font-size:.8rem;font-weight:600}
+.chip.hl{background:var(--ambra)}
+.chip.arr{background:transparent;padding:5px 2px;color:#9db8ad}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:18px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:12px;
+  padding:10px 12px;text-align:center}
+.stat b{display:block;font-size:1.3rem;color:var(--ambra2)}
+.stat span{font-size:.74rem;color:#cfe4da}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:var(--verde);box-shadow:0 2px 10px rgba(0,0,0,.18)}
+nav .wrap{display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:#dfe9e4;text-decoration:none;padding:12px 13px;font-size:.87rem;font-weight:600;
+  white-space:nowrap;border-bottom:3px solid transparent}
+nav a:hover{color:#fff}
+nav a.on{color:#fff;border-bottom-color:var(--ambra2)}
+nav select{margin-left:auto;background:var(--verde2);color:#fff;border:1px solid rgba(255,255,255,.35);
+  border-radius:8px;padding:6px 8px;font-size:.82rem;font-family:inherit}
+nav select:focus{outline:2px solid var(--ambra2)}
+
+/* lucchetto */
+.lockbtn{position:fixed;top:10px;right:14px;z-index:1000;width:46px;height:46px;border-radius:50%;
+  background:rgba(14,90,71,.94);color:#fff;border:1.5px solid rgba(255,255,255,.45);
+  font-size:1.25rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.lockbtn:hover{background:var(--verde2)}
+.editbar{display:none;position:fixed;top:14px;right:70px;z-index:1000;background:var(--ambra);
+  color:#fff;border-radius:10px;padding:8px 14px;font-size:.78rem;font-weight:700;
+  box-shadow:0 2px 10px rgba(0,0,0,.25);max-width:260px}
+body.editmode [data-ed],body.editmode .edf{outline:1.5px dashed var(--ambra);outline-offset:3px;
+  border-radius:4px;cursor:text;min-width:1em;min-height:1em}
+body.editmode .delt,body.editmode .addt{display:inline-block}
+.delt,.addt{display:none}
+
+/* sezioni */
+section{padding:30px 0 6px}
+h2.t{font-size:1.3rem;color:var(--verde);margin-bottom:4px}
+h2.t .n{color:var(--ambra);margin-right:8px}
+p.lead{color:var(--grigio);font-size:.92rem;max-width:780px;margin-bottom:14px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px 18px;
+  box-shadow:0 1px 3px rgba(34,48,59,.05)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.tag{display:inline-block;background:var(--verdino);color:var(--verde);border-radius:999px;
+  padding:2px 10px;font-size:.72rem;font-weight:700;margin:0 2px 4px 0}
+.tag.ambra{background:var(--ambch);color:var(--ambra)}
+.tag.grigio{background:#EEF0F2;color:var(--grigio)}
+
+/* riepilogo home */
+.righe{display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--linea);
+  border-radius:12px;padding:10px 14px;text-decoration:none;color:var(--ink);
+  transition:transform .15s,box-shadow .2s}
+.row:hover{transform:translateX(4px);box-shadow:0 4px 12px rgba(34,48,59,.1)}
+.rthumb{width:84px;height:56px;object-fit:cover;border-radius:8px;flex:none;border:1px solid var(--linea);
+  box-shadow:0 1px 4px rgba(34,48,59,.08)}
+.rnum{min-width:34px;height:34px;border-radius:50%;background:var(--verde);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem;flex:none}
+.rbody{flex:1;min-width:0}
+.rbody b{display:block;font-size:.95rem;line-height:1.3}
+.rmeta{font-size:.76rem;color:var(--grigio)}
+.rarrow{color:var(--ambra);font-size:1.15rem;flex:none}
+
+/* giorno */
+.grid-day{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:20px}
+@media(max-width:860px){.grid-day{grid-template-columns:1fr}}
+.blocco{margin-bottom:14px}
+.blocco h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--verde);
+  margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.blocco p{font-size:.92rem}
+.gemmac{background:var(--verdino);border-radius:12px;padding:12px 15px}
+.skipc{background:#FFF9F0;border:1px solid #F0D9B0;border-radius:12px;padding:12px 15px}
+.opzc{color:var(--grigio);font-size:.88rem;border-top:1px dashed var(--linea);padding-top:8px}
+.voloc{border-left:4px solid var(--blu);background:#F0F7FC}
+.vtab{margin-top:6px}
+.vrow{display:flex;gap:12px;align-items:baseline;padding:5px 0;border-bottom:1px dashed #D8E4EF}
+.vrow:last-of-type{border-bottom:0}
+.vlab{min-width:74px;font-size:.68rem;font-weight:800;letter-spacing:.06em;color:var(--grigio)}
+.vluogo{min-width:118px;font-weight:700;font-size:.9rem}
+.vtime{min-width:140px;font-weight:800;color:var(--blu);font-size:1.08rem}
+.vcod{font-size:.78rem;color:var(--grigio);flex:1;text-align:right}
+.vstatus{font-size:.86rem;margin-top:8px;padding:7px 10px;background:#E3F0FA;border-radius:8px}
+.vstatus .vst{color:var(--blu)}
+.vgate{font-size:.8rem;color:var(--grigio);margin-top:6px;padding:7px 10px;background:#F2F6FA;
+  border-radius:8px}
+.vlinks{margin-top:8px;display:flex;flex-wrap:wrap}
+.vupd{font-size:.72rem;color:var(--grigio);margin-top:6px}
+.emb{background:#fff;border:1px solid var(--linea);border-radius:14px;overflow:hidden;margin-bottom:12px}
+.emb iframe{width:100%;height:290px;border:0;display:block}
+.embcap{font-size:.78rem;color:var(--grigio);padding:7px 12px;background:var(--crema);
+  border-top:1px solid var(--linea)}
+.luoghi .place{display:flex;gap:10px;padding:9px 4px;border-bottom:1px solid #F0EEE7}
+.luoghi .place:last-child{border-bottom:0}
+.luoghi .pin{font-size:1.05rem;line-height:1.2;flex:none}
+.luoghi .pname{font-weight:700;font-size:.9rem}
+.luoghi .pnote{font-size:.78rem;color:var(--grigio)}
+.ml{display:inline-block;background:var(--verde);color:#fff;border-radius:8px;padding:4px 10px;
+  font-size:.74rem;font-weight:700;text-decoration:none;margin-top:3px}
+.ml.ghost{background:#fff;color:var(--verde);border:1px solid var(--verde2)}
+.ml:hover{filter:brightness(1.08)}
+
+/* meteo */
+.meteo{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#EAF4FB,#F5FAF5);
+  border:1px solid #D4E4F0;border-radius:14px;padding:12px 16px;margin-bottom:10px}
+.meteo .mico{font-size:2.2rem;line-height:1}
+.meteo .mtemp{font-weight:800;color:var(--verde);font-size:1.15rem}
+.meteo .mnota{font-size:.84rem;color:var(--grigio)}
+.mupd{font-size:.72rem;color:var(--grigio);margin:0 0 2px}
+.photocap{font-size:.72rem;color:var(--grigio);margin:0 0 12px;font-style:italic}
+/* galleria immagini (grandi) */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:14px}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:230px;object-fit:cover;border-radius:12px;border:1px solid var(--linea);
+  box-shadow:0 2px 8px rgba(34,48,59,.08)}
+.gallery figcaption{font-size:.74rem;color:var(--grigio);margin-top:4px}
+
+/* scaletta (senza spunte) */
+.tappe{list-style:none;display:flex;flex-direction:column;gap:2px}
+.tappa{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-radius:10px;
+  border-left:3px solid transparent}
+.tappa:hover{background:#F7F5EE}
+.timg{width:120px;height:80px;object-fit:cover;border-radius:8px;flex:none;border:1px solid var(--linea);
+  box-shadow:0 1px 4px rgba(34,48,59,.1)}
+.tora{min-width:48px;font-weight:800;color:var(--verde);font-size:.88rem;padding-top:1px;flex:none}
+.tcorpo{flex:1;min-width:0}
+.tcorpo b{font-size:.93rem;display:block}
+.tcorpo b .opt{font-size:.66rem;font-weight:700;color:var(--grigio);background:#EEF0F2;
+  border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+.tnota{display:block;font-size:.79rem;color:var(--grigio)}
+.tluogo{display:block;font-size:.72rem;color:var(--blu)}
+.delt{background:none;border:none;color:#B91C1C;cursor:pointer;font-size:1rem;padding:2px 6px;
+  margin-left:auto;flex:none}
+.addt{background:var(--verde);color:#fff;border:none;border-radius:8px;padding:6px 12px;
+  font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;margin:6px 0 0 12px}
+.addt:hover{background:var(--verde2)}
+.btnmini{background:transparent;border:1px solid var(--linea);border-radius:8px;padding:3px 10px;
+  font-size:.74rem;color:var(--grigio);cursor:pointer;font-family:inherit}
+.btnmini:hover{border-color:var(--ambra);color:var(--ambra)}
+
+/* hotel */
+.addrow{display:flex;gap:8px;margin-top:10px}
+.addrow input{flex:1;border:1.5px solid var(--linea);border-radius:10px;padding:8px 12px;
+  font-size:.86rem;font-family:inherit}
+.addrow input:focus{outline:none;border-color:var(--verde2)}
+.addrow button{background:var(--verde);color:#fff;border:none;border-radius:10px;padding:8px 16px;
+  font-weight:700;font-size:.86rem;cursor:pointer;font-family:inherit}
+.addrow button:hover{background:var(--verde2)}
+.hotlink{margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* prev/next & daystrip */
+.prevnext{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:26px 0 10px;flex-wrap:wrap}
+.prevnext a{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:8px 14px;
+  text-decoration:none;color:var(--verde);font-weight:700;font-size:.86rem}
+.prevnext a.home{background:var(--verde);color:#fff;border-color:var(--verde)}
+.daystrip{display:flex;gap:6px;overflow-x:auto;padding:6px 0 4px;scrollbar-width:thin}
+.daystrip a{min-width:34px;height:34px;border-radius:10px;background:#fff;border:1px solid var(--linea);
+  display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink);
+  font-weight:700;font-size:.84rem}
+.daystrip a.on{background:var(--verde);color:#fff;border-color:var(--verde)}
+
+/* mappa SVG */
+.svgbox{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:12px;margin-bottom:6px}
+.svgbox svg{width:100%;height:auto;display:block}
+.mare{fill:#C8DFF0}
+.estero{fill:#E7E2D4}
+.prov{fill:#FBF8F0;stroke:#C9C1AC;stroke-width:.4;vector-effect:non-scaling-stroke}
+.prov.vis{fill:#DFEBDE;stroke:#A9C4AE;stroke-width:.7}
+.prov:hover{fill:#EDF4ED}
+.r-bus{stroke:#0E7A50;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.r-ferry{stroke:#1E6FA8;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.r-night{stroke:#7B4CD6;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.r-loop{stroke:#E8860B;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.r-loop.lc{stroke-width:1.1}
+.stop{cursor:pointer}
+.stop circle{fill:#fff;stroke:#22303B;stroke-width:1.8}
+.stop:hover circle{fill:#FDF3E3;stroke-width:2.4}
+.stopnum{font-size:4.6px;font-weight:800;fill:#22303B;text-anchor:middle;pointer-events:none}
+.puntino{fill:#fff;stroke:#5B6B76;stroke-width:1.1;cursor:pointer}
+.puntino:hover{fill:#FDF3E3}
+.lbl,.lbl-main,.lbl-s,.lbl-sea,.lbl-star,.map-title,.map-sub,.legtxt,.legtitle{
+  paint-order:stroke;stroke:#fff;stroke-width:1.7px;stroke-linejoin:round}
+.lbl{font-size:4.3px;font-weight:700;fill:#22303B}
+.lbl-main{font-size:5.4px;font-weight:800;fill:#0E5A47}
+.lbl-s{font-size:3.8px;font-weight:400;fill:#5B6B76}
+.lbl-sea{font-size:4.1px;font-style:italic;fill:#5E87A8}
+.lbl-star{font-size:3.9px;font-weight:800;fill:#C2410C}
+.map-title{font-size:7px;font-weight:800;fill:#0E5A47}
+.map-sub{font-size:4.4px;fill:#5B6B76}
+.legbox{fill:#fff;stroke:#D8D2C2;opacity:.96}
+.legtxt{font-size:3.9px;fill:#22303B}
+.legtitle{font-size:4.6px;font-weight:800;fill:#0E5A47}
+.scala{stroke:#22303B;stroke-width:1.1}
+.nord line{stroke:#22303B;stroke-width:1.4}
+.nord path{fill:#22303B;stroke:none}
+.inset-vn{fill:#F3EFE3;stroke:#B9B3A3;stroke-width:.6}
+.inset-box{fill:none;stroke:#E8860B;stroke-width:2.6}
+#inset{pointer-events:none}
+
+/* mappa pagina tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{background:#fff;border:1.5px solid var(--linea);border-radius:999px;padding:7px 14px;
+  font-weight:700;font-size:.83rem;cursor:pointer;color:var(--ink);font-family:inherit}
+.tabs button.on{background:var(--verde);border-color:var(--verde);color:#fff}
+.tabs button.b-ferry.on{background:var(--blu);border-color:var(--blu)}
+.tabs button.b-night.on{background:var(--viola);border-color:var(--viola)}
+.tabs button.b-loop.on{background:var(--arancio);border-color:var(--arancio)}
+.leginfo{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+
+/* checklist */
+.cl{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-bottom:1px solid #F0EEE7;
+  cursor:pointer;border-radius:8px}
+.cl:hover{background:#F7F5EE}
+.cl input{margin-top:4px;accent-color:var(--verde);width:17px;height:17px;flex:none}
+.cl .txt{font-size:.88rem;flex:1}
+.cl.done .txt{color:var(--grigio);text-decoration:line-through}
+.cl .meta{display:block;font-size:.74rem;color:var(--grigio)}
+.cl .del{background:none;border:none;color:var(--grigio);cursor:pointer;font-size:1rem;
+  padding:0 4px;visibility:hidden}
+.cl:hover .del{visibility:visible}
+.cl .del:hover{color:var(--ambra)}
+.prog{height:8px;background:#EDEBE2;border-radius:99px;overflow:hidden;margin:8px 0 4px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--verde2),var(--ambra2));
+  width:0;transition:width .4s}
+.bttn{display:inline-block;background:var(--ambra);color:#fff;border:none;border-radius:10px;
+  padding:9px 16px;font-weight:700;font-size:.86rem;cursor:pointer;text-decoration:none}
+.bttn.ghost{background:transparent;border:1.5px solid var(--verde2);color:var(--verde)}
+
+footer{background:var(--verde);color:#cfe4da;margin-top:40px;padding:24px 0;font-size:.82rem}
+footer a{color:var(--ambra2)}
+@media print{
+  nav,footer,.prevnext,.daystrip,.lockbtn,.editbar{display:none!important}
+  body{background:#fff}
+  .card,.row,.emb{box-shadow:none;break-inside:avoid}
+  section{padding:12px 0}
+}
+</style>
+</head>
+<body>
+<button id="lockbtn" class="lockbtn" title="Sblocca la modifica di testi e tappe">🔒</button>
+<div id="editbar" class="editbar">✏️ Modifica attiva: clicca su testi e tappe per cambiarli</div>
+<nav><div class="wrap">
+      <a href="index.html">🏠 Panoramica</a><a href="mappa.html">🗺 Mappa</a><a href="info.html" class="on">📋 Info & Checklist</a>
+      <select onchange="if(this.value) location.href=this.value" aria-label="Vai al giorno">
+        <option value="">Giorno…</option><option value="giorno-1.html">Giorno 1 — Benvenuti ad Hanoi — l'impatto con il Quarti</option>
+<option value="giorno-2.html">Giorno 2 — Hanoi tra Storia, Cultura e Street Food</option>
+<option value="giorno-3.html">Giorno 3 — Hanoi → Isola di Cat Ba (bus mattutino)</option>
+<option value="giorno-4.html">Giorno 4 — Cat Ba — Ngu Lam, Hospital Cave & mare</option>
+<option value="giorno-5.html">Giorno 5 — Crociera Baia di Lan Ha (6h) → Ninh Binh</option>
+<option value="giorno-6.html">Giorno 6 — Ninh Binh — Trang An & Thung Nham al tramont</option>
+<option value="giorno-7.html">Giorno 7 — Ninh Binh — Hang Mua all'alba, relax & cabin</option>
+<option value="giorno-8.html">Giorno 8 — Ha Giang Loop D1 — Quan Ba & Yen Minh (~100 </option>
+<option value="giorno-9.html">Giorno 9 — Ha Giang Loop D2 — Tham Ma, Palazzo Hmong & </option>
+<option value="giorno-10.html">Giorno 10 — Il giorno dei mercati — Ma Pi Leng, Canyon T</option>
+<option value="giorno-11.html">Giorno 11 — Loop D4 — Cascata di Du Gia → Ha Giang → Han</option>
+<option value="giorno-12.html">Giorno 12 — Hanoi — riposo, Mausoleo (opzionale) & mario</option>
+<option value="giorno-13.html">Giorno 13 — A ovest di Hanoi — Duong Lam & Pagoda Tay Ph</option>
+<option value="giorno-14.html">Giorno 14 — Ultimo giorno ad Hanoi & volo di rientro (22</option>
+      </select>
+    </div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Guida interattiva · Edizione finale</div>
+    <h1 data-ed="h1">Info pratiche &amp; checklist</h1>
+    <div class="sub" data-ed="sub">Regole d'oro e la checklist interattiva: aggiungi le tue voci.</div>
+  </div>
+</header>
+<main class="wrap">
+  <section id="pratiche">
+    <h2 class="t"><span class="n">01</span>Regole d'oro</h2>
+    <div class="grid2">
+      <div class="card"><b style="color:var(--verde)">🧳 Bagagli</b>
+        <p style="margin-top:6px;font-size:.9rem" data-ed="r1">Trolley grande GG 1–7, poi nella "
+        "<b>luggage room</b> gratuita ad Ha Giang. In moto: zaino 20–30L (strati, antivento, scarpe da "
+        "trekking, costume, microfibra, powerbank, repellente, anti-nausea).</p></div>
+      <div class="card"><b style="color:var(--verde)">💵 Soldi</b>
+        <p style="margin-top:6px;font-size:.9rem" data-ed="r2">Carta in città; <b>contanti 2–3M VND a "
+        "testa</b> per il loop (barca, Skywalk, homestay). ATM a Ha Giang City, Yen Minh e Dong Van.</p></div>
+      <div class="card"><b style="color:var(--verde)">🏍 Moto</b>
+        <p style="margin-top:6px;font-size:.9rem" data-ed="r3">Casco sempre allacciato. Easy Rider 4D3N "
+        "verificato, ~150–180 USD totali. Assicurazione con copertura da <b>passeggero</b> di moto. Mai "
+        "in moto al buio.</p></div>
+      <div class="card"><b style="color:var(--verde)">📱 App &amp; visto</b>
+        <p style="margin-top:6px;font-size:.9rem" data-ed="r4">SIM/eSIM Viettel, Grab, mappe offline per "
+        "il loop. Nessun visto: esenzione 45 giorni per italiani (fino al 2028). Passaporto con 6 mesi "
+        "di validità.</p></div>
+    </div>
+  </section>
+  <section id="checklist">
+    <h2 class="t"><span class="n">02</span>Checklist interattiva</h2>
+    <p class="lead">Spunta le voci, <b>aggiungi le tue</b> con il campo in fondo a ogni lista: tutto resta
+      salvato su questo dispositivo.
+      <button class="bttn ghost" id="resetcl" style="margin-left:8px;padding:4px 10px;font-size:.76rem">Azzera tutto</button></p>
+    <div class="card"><b style="color:var(--verde)">Prenotazioni (entro inizio settembre)</b>
+      <div class="prog"><i id="bar1"></i></div><div id="cl1"></div>
+      <div class="addrow"><input id="in1" placeholder="Aggiungi una voce… (es. prenotare ristorante)"><button data-g="1">＋ Aggiungi</button></div></div>
+    <div class="card" style="margin-top:14px"><b style="color:var(--verde)">Documenti &amp; pratiche</b>
+      <div class="prog"><i id="bar2"></i></div><div id="cl2"></div>
+      <div class="addrow"><input id="in2" placeholder="Aggiungi una voce…"><button data-g="2">＋ Aggiungi</button></div></div>
+    <div class="card" style="margin-top:14px"><b style="color:var(--verde)">Zaino per il loop (20–30L)</b>
+      <div class="prog"><i id="bar3"></i></div><div id="cl3"></div>
+      <div class="addrow"><input id="in3" placeholder="Aggiungi una voce…"><button data-g="3">＋ Aggiungi</button></div></div>
+  </section>
+</main>
+<script>
+const GROUPS = [
+ {id:"cl1", bar:"bar1", inp:"in1", items:[
+   ["Cabin bus Ninh Binh → Ha Giang (gio 15/10 h 19:00)", "cabina doppia inferiore + early check-in ostello"],
+   ["Easy Rider 4D3N (ven 16 → lun 19/10)", "casco e assicurazione inclusi"],
+   ["Limousine Ha Giang → Hanoi (lun 19/10 h 16:00)", "late check-in hotel confermato"],
+   ["Bus Hanoi → Cat Ba (dom 11/10 h 09:30)", "traghetto incluso, ~3.5–4h"],
+   ["Crociera Lan Ha (mar 13/10)", "se possibile con sosta Viet Hai"],
+   ["Bus Cat Ba → Ninh Binh (mar 13/10, pickup 16:00)", "durata reale ~4.5h"],
+   ["Hotel Hanoi (9–10 e 19–21/10) + hotel Cat Ba + homestay Tam Coc", ""],
+   ["Caffè Train Street (sab 10/10) + marionette + massaggi", "Train Street: solo con prenotazione"],
+ ]},
+ {id:"cl2", bar:"bar2", inp:"in2", items:[
+   ["Passaporto con 6 mesi di validità residua", "nessun visto: esenzione 45 giorni"],
+   ["Assicurazione di viaggio con copertura da PASSEGGERO di moto", "molte polizze lo escludono"],
+   ["Patente internazionale (IDP) se guidate lo scooter a Cat Ba", ""],
+   ["SIM/eSIM Viettel (~200.000 VND) + app Grab", ""],
+   ["Contanti 2–3M VND a testa per il loop", "barca Tu San e Skywalk solo contanti"],
+   ["Mappe offline per Ha Giang + traduttore offline", ""],
+ ]},
+ {id:"cl3", bar:"bar3", inp:"in3", items:[
+   ["Abbigliamento a strati (sera in quota 13–16°C)", ""],
+   ["Giacca antivento / impermeabile", ""],
+   ["Scarpe da trekking con ottimo grip", ""],
+   ["Costume + asciugamano in microfibra", "per la cascata di Du Gia"],
+   ["Powerbank capiente + repellente per insetti", ""],
+   ["Medicinali personali + anti-nausea", "per Tham Ma e Ma Pi Leng"],
+ ]},
+];
+const KEY = "vn2026-check";
+function loadState(){ try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ return {}; } }
+function saveState(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+let state = loadState();
+function customItems(gid){ const c = state.custom || {}; return c[gid] || []; }
+function renderGroup(g){
+  const boxEl = document.getElementById(g.id);
+  boxEl.innerHTML = "";
+  const defs = g.items.map((it, i) => ({ t: it[0], m: it[1], key: g.id + "-" + i }));
+  const cust = customItems(g.id).map((t, i) => ({ t: t, m: "", key: g.id + "-c" + i, custom: true }));
+  defs.concat(cust).forEach(it => {
+    const done = !!state[it.key];
+    const lab = document.createElement("label");
+    lab.className = "cl" + (done ? " done" : "");
+    lab.innerHTML = `<input type="checkbox" ${done ? "checked" : ""}>
+      <span class="txt">${it.t}${it.m ? `<span class="meta">${it.m}</span>` : ""}</span>` +
+      (it.custom ? `<button class="del" title="Rimuovi">✕</button>` : "");
+    lab.querySelector("input").addEventListener("change", ev => {
+      state[it.key] = ev.target.checked; saveState(); renderGroup(g); updateBars();
+    });
+    if (it.custom) {
+      lab.querySelector(".del").addEventListener("click", ev => {
+        ev.preventDefault();
+        const idx = parseInt(it.key.split("-c")[1], 10);
+        state.custom[g.id] = customItems(g.id).filter((_, j) => j !== idx);
+        delete state[it.key];
+        saveState(); renderGroup(g); updateBars();
+      });
+    }
+    boxEl.appendChild(lab);
+  });
+}
+function updateBars(){
+  GROUPS.forEach(g => {
+    const tot = g.items.length + customItems(g.id).length;
+    const done = g.items.filter((_, i) => state[g.id + "-" + i]).length +
+      customItems(g.id).filter((_, i) => state[g.id + "-c" + i]).length;
+    document.getElementById(g.bar).style.width = (tot ? done / tot * 100 : 0) + "%";
+  });
+}
+GROUPS.forEach(g => {
+  renderGroup(g);
+  const btn = document.querySelector(`button[data-g="${g.id.slice(-1)}"]`);
+  const inp = document.getElementById(g.inp);
+  const add = () => {
+    const v = inp.value.trim();
+    if (!v) return;
+    state.custom = state.custom || {};
+    state.custom[g.id] = customItems(g.id).concat([v]);
+    inp.value = "";
+    saveState(); renderGroup(g); updateBars();
+  };
+  btn.addEventListener("click", add);
+  inp.addEventListener("keydown", ev => { if (ev.key === "Enter") add(); });
+});
+updateBars();
+document.getElementById("resetcl").addEventListener("click", () => {
+  state = {};
+  try { localStorage.removeItem(KEY); } catch(e){}
+  GROUPS.forEach(renderGroup); updateBars();
+});
+</script>
+<footer><div class="wrap">
+    <p><b>Vietnam del Nord · Guida interattiva</b> — 9–22 ottobre 2026 · orari verificati su fonti
+    aggiornate ad agosto 2026; confermate sempre alla prenotazione.</p>
+    <p style="margin-top:8px">📄 <a href="assets/Guida_Vietnam_del_Nord_Definitiva.pdf">Guida completa PDF</a>
+    &nbsp;·&nbsp; 📃 <a href="assets/Depliant_Vietnam_del_Nord.pdf">Depliant pieghevole PDF</a>
+    &nbsp;·&nbsp; 🗺 <a href="assets/mappa_itinerario.png">Mappa PNG in alta risoluzione</a></p>
+    <p style="margin-top:6px; font-size:.75rem">Meteo: previsione live Open-Meteo con media climatica
+    (si aggiorna automaticamente) · le mappe Google richiedono una connessione internet.</p>
+    </div></footer>
+<script>
+const EDKEY = "vn2026-edit-" + (location.pathname.split("/").pop() || "index.html");
+function edLoad(){ try { return JSON.parse(localStorage.getItem(EDKEY) || "{}"); } catch(e){ return {}; } }
+let edits = edLoad();
+function edSave(){ try { localStorage.setItem(EDKEY, JSON.stringify(edits)); } catch(e){} }
+document.querySelectorAll("[data-ed]").forEach(el => {
+  const k = el.dataset.ed;
+  if (edits[k] != null && edits[k] !== "") el.textContent = edits[k];
+});
+const lockBtn = document.getElementById("lockbtn");
+const editbar = document.getElementById("editbar");
+function setEdit(on){
+  document.body.classList.toggle("editmode", on);
+  document.querySelectorAll("[data-ed]").forEach(el => { el.contentEditable = on ? "true" : "false"; });
+  if (lockBtn) lockBtn.textContent = on ? "🔓" : "🔒";
+  if (editbar) editbar.style.display = on ? "block" : "none";
+  try { localStorage.setItem("vn2026-editmode", on ? "1" : "0"); } catch(e){}
+  if (window.onEditMode) window.onEditMode(on);
+}
+if (lockBtn) lockBtn.addEventListener("click", () => setEdit(!document.body.classList.contains("editmode")));
+document.addEventListener("input", e => {
+  if (e.target.dataset && e.target.dataset.ed !== undefined) {
+    edits[e.target.dataset.ed] = e.target.textContent;
+    edSave();
+  }
+});
+let initEdit = false;
+try { initEdit = (localStorage.getItem("vn2026-editmode") || "0") === "1"; } catch(e){}
+setEdit(initEdit);
+</script>
+
+</body>
+</html>
