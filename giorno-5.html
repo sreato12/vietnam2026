@@ -403,7 +403,7 @@ function tRender(){
   tlist.innerHTML = tmodel.map(rowHtml).join("");
   tlist.querySelectorAll(".delt").forEach(b => {
     b.addEventListener("click", () => {
-      histPush(true);
+      if (typeof histPush === "function") histPush(true);
       const uid = b.closest(".tappa").dataset.uid;
       tmodel = tmodel.filter(t => t.uid !== uid);
       tSave(); tRender();
@@ -412,7 +412,7 @@ function tRender(){
   tlist.querySelectorAll(".edf").forEach(el => {
     el.contentEditable = editOn ? "true" : "false";
     el.addEventListener("input", () => {
-      histPush();
+      if (typeof histPush === "function") histPush();
       const li = el.closest(".tappa");
       const t = tmodel.find(x => x.uid === li.dataset.uid);
       if (t) { t[el.dataset.f] = el.textContent; tSave(); }
@@ -420,7 +420,7 @@ function tRender(){
   });
 }
 document.getElementById("addt").addEventListener("click", () => {
-  histPush(true);
+  if (typeof histPush === "function") histPush(true);
   tmodel.push({uid: "u" + Date.now(), ora: "10:00", titolo: "Nuova tappa", nota: "", luogo: "", opz: false, img: null});
   tSave(); tRender();
 });
@@ -439,7 +439,7 @@ window.__restore = function(s){
     if (o.tmodel) { tmodel = o.tmodel; tSave(); tRender(); }
   } catch(e){}
 };
-histInit();
+if (typeof histInit === "function") histInit();
 tRender();
 
 // STATO VOLI (OpenSky) — solo nei giorni con volo
